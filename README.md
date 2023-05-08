@@ -1,7 +1,7 @@
 # simplex-cube
 An animated GUI that gives the user control over the texture, size, and movement of a cube. Inspired by experimenting with WEBGL and the openSimplexNoise algorithm which can be found  <a href = 'https://gist.github.com/PARC6502/85c99c04c9b3c6ae52c3c27605b4df0a'> here</a>.
 
-<img width="1439" alt="Screenshot 2023-05-08 at 18 45 10" src="https://user-images.githubusercontent.com/106311108/236894539-fc4ea023-4a01-4345-a1b3-5cf1c318bd8a.png">
+<img width="1439" alt="Screenshot 2023-05-09 at 00 12 24" src="https://user-images.githubusercontent.com/106311108/236956707-bc0311c9-fd4a-4b79-8114-b26d84e18848.png">
 
 ### How to run
 1. Clone and cd into this repo
