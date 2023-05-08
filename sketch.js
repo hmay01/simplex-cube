@@ -13,21 +13,18 @@ let xRange;
 let yRange;
 let zRange;
 let angleMultiplierRange;
+let darkMode;
 
 function setup() {
   const canvas = createCanvas(400, 400, WEBGL);
   canvas.parent(document.getElementById("canvasDiv"));
-  resetButton = document.getElementById("reset");
-
-  resetButton.addEventListener("click", (event) => {
-    resetSketch();
-  });
 
   getSlidersFromDoc();
   pixelDensity(1);
 
   noStroke();
   resetSketch();
+  darkMode = false;
 }
 
 function getSlidersFromDoc() {
@@ -53,7 +50,13 @@ function resetSketch() {
 }
 
 function draw() {
-  background(255);
+  if (darkMode == false) {
+    background(255);
+    document.getElementById("darkMode").innerText = "DARK";
+  } else {
+    background(0);
+    document.getElementById("darkMode").innerText = "LIGHT";
+  }
 
   let inc = map(grainDensityRange.value, 0, 1000, 0.001, 0.5);
 
@@ -101,4 +104,14 @@ function noiseOnGraphics(graphics, zinc, inc) {
   }
   graphics.updatePixels();
   zoff += zinc;
+}
+
+function changeDarkMode() {
+  if (darkMode == false) {
+    document.documentElement.setAttribute("data-theme", "dark");
+    darkMode = true;
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+    darkMode = false;
+  }
 }

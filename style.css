@@ -1,12 +1,36 @@
+:root {
+  --font-color: #black;
+  --bg-color: #fff;
+  --slider-color: black;
+}
+
+[data-theme="dark"] {
+  --font-color: white;
+  --bg-color: black;
+  --slider-color: white;
+}
+
 html,
 body {
   margin: 30px;
   margin-left: 100px;
   margin-right: 100px;
   padding: 0;
+
   /* font-family: Arial, Helvetica, sans-serif; */
   font-family: "DotGothic16", sans-serif;
-  /* background-color: hsla(308, 100%, 62%, 0.192); */
+  background-color: var(--bg-color);
+  color: var(--font-color);
+}
+
+#darkModeContainer {
+  float: right;
+}
+
+h1 {
+  clear: right;
+  text-align: center;
+  font-size: 30pt;
 }
 
 .container {
@@ -16,8 +40,13 @@ body {
 
 .parameter {
   width: 200px;
-  padding: 15px;
+  padding-top: 5px;
   box-sizing: border-box;
+}
+
+#topContainer {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .slider {
@@ -29,13 +58,14 @@ body {
 
 /***** Chrome, Safari, Opera, and Edge Chromium *****/
 .slider::-webkit-slider-runnable-track {
-  background: black;
+  background: var(--slider-color);
   height: 3px;
 }
 
 /******** Firefox ********/
 .slider::-moz-range-track {
-  background: black;
+  background: var(--slider-color);
+
   height: 3px;
 }
 
@@ -47,7 +77,8 @@ body {
   /*(1.5)-(10)*/
 
   margin-top: -8.5px;
-  background-color: black;
+  background: var(--slider-color);
+
   height: 20px;
   width: 10px;
 }
@@ -56,41 +87,42 @@ body {
 .slider::-moz-range-thumb {
   border: none; /*Removes extra border that FF applies*/
   border-radius: 0; /*Removes default border-radius that FF applies*/
-  background-color: black;
+  background: var(--slider-color);
+
   height: 20px;
   width: 10px;
 }
 
-#canvasDiv {
-  padding-top: 50px;
+#darkMode {
+  font-size: 15pt;
 }
 
-h1 {
-  text-align: center;
+#reset {
+  font-size: 20pt;
 }
 
 button {
   background-color: transparent;
-  font-size: 20pt;
   font-family: "DotGothic16", sans-serif;
 
-  color: black;
   font-weight: bold;
   border: none;
+  color: var(--font-color);
 }
 
 #bottomContainer {
   display: flex;
   justify-content: center;
+  margin-top: 30px;
 }
 
-#reset:hover {
-  text-shadow: 5px 5px 5px lightblue;
+button:hover {
+  text-shadow: 0px 5px 5px lightblue;
   cursor: pointer;
   transition: text-shadow 0.2s;
 }
 
-#reset:active {
+button:active {
   color: grey;
   transform: translateY(10%);
   text-shadow: none;

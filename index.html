@@ -20,7 +20,12 @@
 
   <body>
     <header>
-      <h1>SIMPLEX NOISE CUBE</h1>
+      <div id="darkModeContainer">
+        <button onclick="changeDarkMode()" id="darkMode"></button>
+      </div>
+      <div>
+        <h1>SIMPLEX NOISE CUBE</h1>
+      </div>
     </header>
 
     <main>
@@ -129,7 +134,7 @@
         </form>
       </div>
       <div id="bottomContainer" class="container">
-        <button id="reset">RESET</button>
+        <button onclick="resetSketch()" id="reset">RESET</button>
       </div>
     </main>
   </body>
