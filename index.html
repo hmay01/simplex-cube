@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Sketch</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DotGothic16"
+      rel="stylesheet"
+    />
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="OpenSimplexNoise.js"></script>
+
+    <script src="libraries/p5.sound.min.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>SIMPLEX NOISE CUBE</h1>
+    </header>
+
+    <main>
+      <div id="topContainer" , class="container">
+        <form id="leftForm">
+          <div id="left">
+            <div class="parameter" , id="grainDensity">
+              <h4>Grain Density</h4>
+              <input
+                id="grainDensityRange"
+                class="slider"
+                type="range"
+                min="0"
+                max="1000"
+                value="20"
+              />
+            </div>
+            <div class="parameter" , id="grainMovement">
+              <h4>Grain Movement Speed</h4>
+              <input
+                id="grainMovementRange"
+                class="slider"
+                type="range"
+                min="0"
+                max="1000"
+                value="100"
+              />
+            </div>
+            <div class="parameter" , id="transparency">
+              <h4>Transparency</h4>
+              <input
+                id="transparencyRange"
+                class="slider"
+                type="range"
+                min="0"
+                max="1000"
+                value="0"
+              />
+            </div>
+
+            <div class="parameter" , id="zoom">
+              <h4>Zoom</h4>
+              <input
+                id="zoomRange"
+                class="slider"
+                type="range"
+                min="0"
+                max="1000"
+                value="180"
+              />
+            </div>
+          </div>
+        </form>
+
+        <div id="canvasDiv">
+          <script src="sketch.js"></script>
+        </div>
+
+        <form id="rightForm">
+          <div id="right">
+            <div class="parameter" id="xRotation">
+              <h4>X rotation</h4>
+              <input
+                id="xRange"
+                class="slider"
+                type="range"
+                min="0"
+                max="1000"
+                value="0"
+              />
+            </div>
+            <div class="parameter" id="yRotation">
+              <h4>Y rotation</h4>
+              <input
+                id="yRange"
+                class="slider"
+                type="range"
+                min="0"
+                max="1000"
+                value="100"
+              />
+            </div>
+            <div class="parameter" id="zRotation">
+              <h4>Z rotation</h4>
+              <input
+                id="zRange"
+                class="slider"
+                type="range"
+                min="0"
+                max="1000"
+                value="0"
+              />
+            </div>
+            <div class="parameter" , id="rotationAngle">
+              <h4>Global Rotation Speed</h4>
+              <input
+                id="angleMultiplierRange"
+                class="slider"
+                type="range"
+                min="0"
+                max="1000"
+                value="500"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+      <div id="bottomContainer" class="container">
+        <button id="reset">RESET</button>
+      </div>
+    </main>
+  </body>
+</html>

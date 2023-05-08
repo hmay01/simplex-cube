@@ -1,0 +1,97 @@
+html,
+body {
+  margin: 30px;
+  margin-left: 100px;
+  margin-right: 100px;
+  padding: 0;
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: "DotGothic16", sans-serif;
+  /* background-color: hsla(308, 100%, 62%, 0.192); */
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.parameter {
+  width: 200px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+}
+
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+.slider::-webkit-slider-runnable-track {
+  background: black;
+  height: 3px;
+}
+
+/******** Firefox ********/
+.slider::-moz-range-track {
+  background: black;
+  height: 3px;
+}
+
+/***** Chrome, Safari, Opera, and Edge Chromium *****/
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  /*(track height in pixels/2)-(thumb height in pixels/2)
+  /*(1.5)-(10)*/
+
+  margin-top: -8.5px;
+  background-color: black;
+  height: 20px;
+  width: 10px;
+}
+
+/***** Firefox *****/
+.slider::-moz-range-thumb {
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 0; /*Removes default border-radius that FF applies*/
+  background-color: black;
+  height: 20px;
+  width: 10px;
+}
+
+#canvasDiv {
+  padding-top: 50px;
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  background-color: transparent;
+  font-size: 20pt;
+  font-family: "DotGothic16", sans-serif;
+
+  color: black;
+  font-weight: bold;
+  border: none;
+}
+
+#bottomContainer {
+  display: flex;
+  justify-content: center;
+}
+
+#reset:hover {
+  text-shadow: 5px 5px 5px lightblue;
+  cursor: pointer;
+  transition: text-shadow 0.2s;
+}
+
+#reset:active {
+  color: grey;
+  transform: translateY(10%);
+  text-shadow: none;
+}
