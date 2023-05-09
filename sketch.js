@@ -64,7 +64,8 @@ function draw() {
 
   noiseOnGraphics(graphics, zinc, inc);
 
-  ambientLight(255);
+  ambientLight(100);
+  directionalLight(255, 255, 255, 0, 0, -1);
 
   rotateX(angle * map(xRange.value, 0, 1000, 0, 5));
   rotateY(angle * map(yRange.value, 0, 1000, 0, 5));
