@@ -4,10 +4,8 @@ An animated GUI that gives the user control over the texture, size, and movement
 <img width="1439" alt="Screenshot 2023-05-09 at 00 12 24" src="https://user-images.githubusercontent.com/106311108/236956707-bc0311c9-fd4a-4b79-8114-b26d84e18848.png">
 <img width="1439" alt="Screenshot 2023-05-09 at 11 45 20" src="https://github.com/hmay01/simplex-cube/assets/106311108/37775c65-bd67-47ec-be34-ad29f6aa74fd">
 
-### How to run
-1. Clone and cd into this repo
-2. run ```python3 -m http.server```
-3. visit http://localhost:8000/
+### How to use
+1. Visit https://hmay01.github.io/simplex-cube/
 
 ### How it works
 - Wrapping a secondary graphics context to a 3d shape using the createGraphics() and texture() functions in a WEBGL instance of p5.js.
