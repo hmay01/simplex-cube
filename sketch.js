@@ -14,12 +14,54 @@ let yRange;
 let zRange;
 let angleMultiplierRange;
 let darkMode;
+let sliders;
+let defaultSliderValues;
+
+window.onload = function () {
+  initAllSliders();
+};
+
+function initAllSliders() {
+  sliders = getSlidersFromDoc();
+  console.log(sliders);
+  defaultSliderValues = getDefaultSliderValues();
+  for (let sliderName in sliders) {
+    sliders[sliderName].value = defaultSliderValues[sliderName];
+    console.log(sliders[sliderName].value);
+  }
+}
+
+function getSlidersFromDoc() {
+  return {
+    grainDensityRange: document.getElementById("grainDensityRange"),
+    grainMovementRange: document.getElementById("grainMovementRange"),
+    transparencyRange: document.getElementById("transparencyRange"),
+    zoomRange: document.getElementById("zoomRange"),
+    xRange: document.getElementById("xRange"),
+    yRange: document.getElementById("yRange"),
+    zRange: document.getElementById("zRange"),
+    angleMultiplierRange: document.getElementById("angleMultiplierRange"),
+  };
+}
+
+function getDefaultSliderValues() {
+  return {
+    grainDensityRange: 20,
+    grainMovementRange: 100,
+    transparencyRange: 0,
+    zoomRange: 180,
+    xRange: 0,
+    yRange: 100,
+    zRange: 0,
+    angleMultiplierRange: 500,
+  };
+}
 
 function setup() {
   const canvas = createCanvas(400, 400, WEBGL);
   canvas.parent(document.getElementById("canvasDiv"));
 
-  getSlidersFromDoc();
+  // getSlidersFromDoc();
   pixelDensity(1);
 
   noStroke();
@@ -27,26 +69,12 @@ function setup() {
   darkMode = false;
 }
 
-function getSlidersFromDoc() {
-  grainDensityRange = document.getElementById("grainDensityRange");
-  grainMovementRange = document.getElementById("grainMovementRange");
-  transparencyRange = document.getElementById("transparencyRange");
-  zoomRange = document.getElementById("zoomRange");
-  xRange = document.getElementById("xRange");
-  yRange = document.getElementById("yRange");
-  zRange = document.getElementById("zRange");
-  angleMultiplierRange = document.getElementById("angleMultiplierRange");
-}
-
 function resetSketch() {
-  //usual setup stuff
   simpNoise = new OpenSimplexNoise(Date.now());
   graphics = createGraphics(400, 400);
   angle = 0;
   zoff = 0;
-  //then reset sliders
-  document.getElementById("leftForm").reset();
-  document.getElementById("rightForm").reset();
+  initAllSliders();
 }
 
 function draw() {
@@ -58,24 +86,24 @@ function draw() {
     document.getElementById("darkMode").innerText = "LIGHT";
   }
 
-  let inc = map(grainDensityRange.value, 0, 1000, 0.001, 0.5);
+  let inc = map(sliders.grainDensityRange.value, 0, 1000, 0.001, 0.5);
 
-  let zinc = map(grainMovementRange.value, 0, 1000, 0, 1);
+  let zinc = map(sliders.grainMovementRange.value, 0, 1000, 0, 1);
 
   noiseOnGraphics(graphics, zinc, inc);
 
   ambientLight(100);
   directionalLight(255, 255, 255, 0, 0, -1);
 
-  rotateX(angle * map(xRange.value, 0, 1000, 0, 5));
-  rotateY(angle * map(yRange.value, 0, 1000, 0, 5));
-  rotateZ(angle * map(zRange.value, 0, 1000, 0, 5));
+  rotateX(angle * map(sliders.xRange.value, 0, 1000, 0, 5));
+  rotateY(angle * map(sliders.yRange.value, 0, 1000, 0, 5));
+  rotateZ(angle * map(sliders.zRange.value, 0, 1000, 0, 5));
 
-  box(document.getElementById("zoomRange").value);
+  box(sliders.zoomRange.value);
 
   texture(graphics);
 
-  angle += map(angleMultiplierRange.value, 0, 1000, 0, 0.1);
+  angle += map(sliders.angleMultiplierRange.value, 0, 1000, 0, 0.1);
 }
 
 function noiseOnGraphics(graphics, zinc, inc) {
@@ -93,7 +121,7 @@ function noiseOnGraphics(graphics, zinc, inc) {
       graphics.pixels[index + 1] = map(n2, -1, 1, 160, 255);
       graphics.pixels[index + 2] = 255;
       graphics.pixels[index + 3] = map(
-        transparencyRange.value,
+        sliders.transparencyRange.value,
         0,
         1000,
         255,
