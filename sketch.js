@@ -23,11 +23,9 @@ window.onload = function () {
 
 function initAllSliders() {
   sliders = getSlidersFromDoc();
-  console.log(sliders);
   defaultSliderValues = getDefaultSliderValues();
   for (let sliderName in sliders) {
     sliders[sliderName].value = defaultSliderValues[sliderName];
-    console.log(sliders[sliderName].value);
   }
 }
 
@@ -142,4 +140,8 @@ function changeDarkMode() {
     document.documentElement.setAttribute("data-theme", "light");
     darkMode = false;
   }
+}
+
+function resetSingleSlider(sliderName) {
+  sliders[sliderName].value = defaultSliderValues[sliderName];
 }
