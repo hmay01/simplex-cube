@@ -61,7 +61,6 @@ function setup() {
   const canvas = createCanvas(400, 400, WEBGL);
   canvas.parent(document.getElementById("canvasDiv"));
 
-  // getSlidersFromDoc();
   pixelDensity(1);
 
   noStroke();
