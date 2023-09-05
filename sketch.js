@@ -17,8 +17,20 @@ let darkMode;
 let sliders;
 let defaultSliderValues;
 
+//audio
+let audioCtx;
+let out;
+let osc;
+let gain;
+let isPlaying;
+const initialFreq = 60;
+const initialDetune = 0;
+
 window.onload = function () {
   initAllSliders();
+  audioCtx = new AudioContext();
+  out = audioCtx.destination;
+  isPlaying = false;
 };
 
 function initAllSliders() {
@@ -101,6 +113,13 @@ function draw() {
   texture(graphics);
 
   angle += map(sliders.angleMultiplierRange.value, 0, 1000, 0, 0.1);
+
+  if (osc) {
+    osc.frequency.linearRampToValueAtTime(
+      map(sliders.angleMultiplierRange.value, 0, 1000, 40, 400),
+      audioCtx.currentTime + 0.1
+    );
+  }
 }
 
 function noiseOnGraphics(graphics, zinc, inc) {
@@ -144,4 +163,27 @@ function changeDarkMode() {
 
 function resetSingleSlider(sliderName) {
   sliders[sliderName].value = defaultSliderValues[sliderName];
+}
+
+function toggleOsc() {
+  if (isPlaying) {
+    osc.stop();
+    isPlaying = false;
+  } else {
+    osc = new OscillatorNode(audioCtx);
+    osc.wave = "sine";
+    osc.frequency.value = map(
+      sliders.angleMultiplierRange.value,
+      0,
+      1000,
+      40,
+      400
+    );
+    osc.connect(out);
+    gain = audioCtx.createGain();
+    gain.connect(out);
+    osc.connect(gain);
+    osc.start();
+    isPlaying = true;
+  }
 }

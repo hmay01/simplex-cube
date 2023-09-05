@@ -98,7 +98,8 @@ h1 {
   font-size: 15pt;
 }
 
-#reset {
+.bottomButton {
+  padding: 0px 50px;
   font-size: 20pt;
 }
 
@@ -114,7 +115,9 @@ button {
 #bottomContainer {
   display: flex;
   justify-content: center;
+
   margin-top: 30px;
+  font-size: 20pt;
 }
 
 button:hover {
